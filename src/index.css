@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  html, body {
+    overflow-x: hidden;
+    touch-action: manipulation;
+  }
+}
+
+/* Custom scrollbars for clean table/list browsing */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* PRINT STYLES - Requirement: Print hanya mencetak dokumen, bukan sidebar, navbar, button, filter */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12pt;
+  }
+
+  .no-print,
+  nav,
+  aside,
+  header,
+  .bottom-nav,
+  .print-hide,
+  button,
+  .filter-bar {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Thermal print format 58mm / 80mm */
+  .thermal-receipt {
+    width: 72mm !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 2mm !important;
+    font-family: 'Courier New', Courier, monospace !important;
+    font-size: 10pt !important;
+    line-height: 1.25 !important;
+  }
+}
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
